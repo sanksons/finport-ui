@@ -117,6 +117,7 @@ const getConfig = (navData) => {
                 },
             },
             responsive: true,
+            aspectRatio: 1.2,
             scales: {
                 x: {
                     stacked: true,
@@ -136,10 +137,10 @@ const getConfig = (navData) => {
 
 <template>
     <!-- <canvas :id=id></canvas> -->
-    <div v-show="loaded">
-        <canvas :id=id></canvas>
+    <div v-show="loaded" class="">
+        <canvas :id=id class="h-auto w-auto"></canvas>
     </div>
-    <div v-show="!loaded">Loading {{ loaded }}</div>
+    <div v-show="!loaded" class="">Loading {{ loaded }}</div>
 </template>
     
     

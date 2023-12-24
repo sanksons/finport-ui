@@ -14,6 +14,7 @@ const getShortTermUnits = (folio) => {
 }
 
 const getLongTermUnits = (folio) => {
+    console.log("folio", folio)
     var result = []
     result.push(folio.RemainingUnits.LongTerm)
     return result
@@ -76,12 +77,5 @@ onMounted(() => GetChart(props.id, config))
     <canvas :id=id></canvas>
 </template>
     
-<style scoped>
-div {
-    display: inline-block;
-    border: 1px dashed;
-    margin: 10px;
-    padding: 10px;
-}
-</style>
+<style scoped></style>
     
