@@ -106,7 +106,8 @@ const config = {
             },
         },
         responsive: true,
-        aspectRatio: 1.2,
+        //aspectRatio: 1.2,
+        maintainAspectRatio: false,
         scales: {
             x: {
                 stacked: true,
@@ -133,12 +134,5 @@ onMounted(() => GetChart(props.id, config))
 </template>
     
     
-<style scoped>
-div {
-    display: inline-block;
-    border: 1px dashed;
-    margin: 10px;
-    padding: 10px;
-}
-</style>
+<style scoped></style>
     
