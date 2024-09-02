@@ -8,6 +8,7 @@ import DataTable from 'primevue/datatable';
 import Column from 'primevue/column';
 
 
+
 const investor = inject('investor')
 
 const stocks = ref([]);
@@ -74,5 +75,3 @@ onMounted(() => {
         </div>
     </div>
 </template>
-
-
