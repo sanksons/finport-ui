@@ -1,4 +1,3 @@
-
 <script setup>
 
 import { useRoute } from 'vue-router'
@@ -20,10 +19,10 @@ onMounted(() => {
             console.log("voila")
             let total = {}
             for (let i in apiData) {
-                if (i != "Broker") {
-                    let t = prepareDashboardValues(apiData[i])
-                    total[i] = t
-                }
+                // if (i != "Broker") {
+                let t = prepareDashboardValues(apiData[i])
+                total[i] = t
+                //}
             }
             //console.log(apiData)
             dashboard.value = { 'data': apiData, 'total': total }
@@ -150,25 +149,6 @@ function prepareDashboardValues(data) {
                         </div>
                     </li>
 
-                    <li class="pb-3 sm:pb-4">
-                        <div class="flex items-center space-x-8 rtl:space-x-reverse">
-
-                            <div class="flex-1 min-w-0 mr-20">
-                                <p class="text-sm font-medium text-gray-900 truncate dark:text-white">
-                                    .
-                                </p>
-                            </div>
-
-                            <div class="inline-flex items-center text-base text-gray-900 dark:text-white">
-
-                            </div>
-                            <div class="inline-flex items-center text-base text-gray-900 dark:text-white">
-
-                            </div>
-                        </div>
-                    </li>
-
-
 
                 </ul>
                 <p class="mt-8 font-normal text-lg space-x-reverse" style="text-align: center;">
@@ -250,148 +230,36 @@ function prepareDashboardValues(data) {
                 class="inline-block max-w-sm p-6 bg-white border border-gray-200 rounded-lg shadow dark:bg-gray-800 dark:border-gray-700 dark:hover:bg-gray-700">
 
                 <h5 class="mb-2 text-2xl  font-bold tracking-tight text-gray-900 dark:text-white">
-                    <a href="#" class="hover:text-blue-600"> ICICI Direct</a>
+                    <a href="#" class="hover:text-blue-600"> Brokers</a>
                 </h5>
 
 
                 <ul class="max-w-md w-full divide-y divide-gray-200 dark:divide-gray-700 mt-4">
 
-                    <li class="pb-3 sm:pb-4">
+                    <li class="pb-3 sm:pb-4" v-for="data in dashboard['data']['Broker']">
                         <div class="flex items-center space-x-8 rtl:space-x-reverse">
 
                             <div class="flex-1 min-w-0 mr-20">
                                 <p class="text-sm font-medium text-gray-900 truncate dark:text-white">
-                                    Shares
+                                    {{ data.Name }}
                                 </p>
                             </div>
 
                             <div class="inline-flex items-center text-base text-gray-900 dark:text-white">
-                                40L
+                                {{ ToIndianNumber(data.Amount) }}
                             </div>
                             <div class="inline-flex items-center text-base text-gray-900 dark:text-white">
-                                70%
+                                {{ data.Percentage }} %
                             </div>
                         </div>
                     </li>
-
-                    <li class="pb-3 sm:pb-4 hover:bg-gray-100">
-                        <a href="/mf/dashboard/1" class="hover:bg-blue-100">
-                            <div class="flex items-center space-x-8 rtl:space-x-reverse ">
-
-                                <div class="flex-1 min-w-0 mr-20">
-                                    <p class="text-sm font-medium text-gray-900 truncate dark:text-white">
-                                        Mutual Fund
-                                    </p>
-                                </div>
-
-                                <div class="inline-flex items-center text-base text-gray-900 dark:text-white">
-                                    40L
-                                </div>
-                                <div class="inline-flex items-center text-base text-gray-900 dark:text-white">
-                                    70%
-                                </div>
-                            </div>
-                        </a>
-                    </li>
-                    <li class="pb-3 sm:pb-4">
-                        <div class="flex items-center space-x-8 rtl:space-x-reverse">
-
-                            <div class="flex-1 min-w-0 mr-20">
-                                <p class="text-sm font-medium text-gray-900 truncate dark:text-white">
-                                    ETFs
-                                </p>
-                            </div>
-
-                            <div class="inline-flex items-center text-base text-gray-900 dark:text-white">
-                                40L
-                            </div>
-                            <div class="inline-flex items-center text-base text-gray-900 dark:text-white">
-                                70%
-                            </div>
-                        </div>
-                    </li>
-
-
-
                 </ul>
                 <p class="mt-8 font-normal text-lg space-x-reverse" style="text-align: center;">
-                    55.56L
+                    {{ ToIndianNumber(dashboard['total']['Broker']) }}
                 </p>
 
             </div>
 
-            <div
-                class="inline-block max-w-sm p-6 bg-white border border-gray-200 rounded-lg shadow hover:bg-gray-100 dark:bg-gray-800 dark:border-gray-700 dark:hover:bg-gray-700">
-
-                <h5 class="mb-2 text-2xl  font-bold tracking-tight text-gray-900 dark:text-white">Zerodha</h5>
-
-
-                <ul class="max-w-md w-full divide-y divide-gray-200 dark:divide-gray-700 mt-4">
-
-                    <li class="pb-3 sm:pb-4">
-                        <div class="flex items-center space-x-8 rtl:space-x-reverse">
-
-                            <div class="flex-1 min-w-0 mr-20">
-                                <p class="text-sm font-medium text-gray-900 truncate dark:text-white">
-                                    Gold
-                                </p>
-                            </div>
-
-                            <div class="inline-flex items-center text-base text-gray-900 dark:text-white">
-                                <div class="flex-1 items-center text-base text-gray-900 dark:text-white">
-                                    <p>40L</p>
-
-                                </div>
-                            </div>
-                            <div class="inline-flex items-center text-base text-gray-900 dark:text-white">
-                                70%
-                            </div>
-                        </div>
-                    </li>
-
-                    <li class="pb-3 sm:pb-4">
-                        <div class="flex items-center space-x-8 rtl:space-x-reverse">
-
-                            <div class="flex-1 min-w-0 mr-20">
-                                <p class="text-sm font-medium text-gray-900 truncate dark:text-white">
-                                    Silver
-                                </p>
-                            </div>
-
-                            <div class="inline-flex items-center text-base text-gray-900 dark:text-white">
-                                40L
-                            </div>
-                            <div class="inline-flex items-center text-base text-gray-900 dark:text-white">
-                                70%
-                            </div>
-                        </div>
-                    </li>
-                    <li class="pb-3 sm:pb-4">
-                        <div class="flex items-center space-x-8 rtl:space-x-reverse">
-
-                            <div class="flex-1 min-w-0 mr-20">
-                                <p class="text-sm font-medium text-gray-900 truncate dark:text-white">
-                                    .
-                                </p>
-                            </div>
-
-                            <div class="inline-flex items-center text-base text-gray-900 dark:text-white">
-
-                            </div>
-                            <div class="inline-flex items-center text-base text-gray-900 dark:text-white">
-
-                            </div>
-                        </div>
-                    </li>
-
-
-
-                </ul>
-                <p class="mt-8 font-normal text-lg space-x-reverse" style="text-align: center;">
-                    55.56L
-                </p>
-
-            </div>
 
 
 
