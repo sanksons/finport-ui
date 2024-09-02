@@ -1,7 +1,7 @@
 <script setup>
-import InvestmentYoY from '../components/charts/InvestmentYoY.vue'
-import UnitsBar from '../components/charts/UnitsBar.vue'
-import FundGrowthYoY from '../components/charts/FundGrowthYoY.vue'
+import InvestmentYoY from '../components/charts/mf/InvestmentYoY.vue'
+import UnitsBar from '../components/charts/mf/UnitsBar.vue'
+import FundGrowthYoY from '../components/charts/mf/FundGrowthYoY.vue'
 import Xirr from '../components/charts/mf/xirr.vue'
 import Investment from '../components/charts/mf/investment.vue'
 
@@ -87,5 +87,3 @@ onMounted(() => {
         </div>
     </div>
 </template>
-
-

@@ -56,21 +56,6 @@ onMounted(() => {
                     </template>
                 </Column>
 
-                <!-- <Column field="Date" header="Date" sortable>
-                        <template #body="slotProps">
-                            {{ dateformat(slotProps.data.Date) }}
-                        </template>
-                    </Column>
-                    <Column field="SoldUnits" header="Status" sortable>
-                        <template #body="slotProps">
-                            {{ prepareStatus(slotProps.data.Units, slotProps.data.SoldUnits) }}
-                        </template>
-                    </Column>
-                    <Column field="Date" header="Age" sortable>
-                        <template #body="slotProps">
-                            {{ prepareAge(slotProps.data.Date) }}
-                        </template>
-                    </Column> -->
             </DataTable>
         </div>
     </div>

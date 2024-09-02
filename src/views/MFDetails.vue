@@ -4,9 +4,9 @@ import DataTable from 'primevue/datatable';
 import Column from 'primevue/column';
 
 
-import InvestmentYoY from '../components/charts/InvestmentYoY.vue'
-import UnitsBar from '../components/charts/UnitsBar.vue'
-import FundGrowthYoY from '../components/charts/FundGrowthYoY.vue'
+import InvestmentYoY from '../components/charts/mf/InvestmentYoY.vue'
+import UnitsBar from '../components/charts/mf/UnitsBar.vue'
+import FundGrowthYoY from '../components/charts/mf/FundGrowthYoY.vue'
 import Investment from '../components/charts/mf/investment.vue'
 
 import { useRoute } from 'vue-router'
@@ -122,8 +122,8 @@ onMounted(() => {
 
         <div>
             <div class="block ml-4">
-                <DataTable :value="folioPurchases" stripedRows paginator :rows="20" :rowsPerPageOptions="[5, 10, 20, 50]"
-                    tableStyle="min-width: 50rem">
+                <DataTable :value="folioPurchases" stripedRows paginator :rows="20"
+                    :rowsPerPageOptions="[5, 10, 20, 50]" tableStyle="min-width: 50rem">
                     <Column field="Units" header="Units" sortable>
 
                     </Column>
