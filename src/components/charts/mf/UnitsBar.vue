@@ -1,6 +1,6 @@
 <script setup>
 import { onMounted } from 'vue'
-import { GetChart, CHART_COLORS, colorize } from '../../utils/chart.js'
+import { GetChart, CHART_COLORS, colorize } from '../../../utils/chart.js'
 
 const props = defineProps({
     id: String,
@@ -76,6 +76,5 @@ onMounted(() => GetChart(props.id, config))
 <template>
     <canvas :id=id></canvas>
 </template>
-    
+
 <style scoped></style>
-    

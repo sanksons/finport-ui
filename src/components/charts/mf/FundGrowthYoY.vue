@@ -1,6 +1,6 @@
 <script setup>
 import { ref, onMounted, onBeforeMount } from 'vue'
-import { GetChart, CHART_COLORS } from '../../utils/chart.js'
+import { GetChart, CHART_COLORS } from '../../../utils/chart.js'
 import ChartDataLabels from 'chartjs-plugin-datalabels';
 
 const props = defineProps({
@@ -143,7 +143,6 @@ const getConfig = (navData) => {
     </div>
     <div v-show="!loaded" class="">Loading {{ loaded }}</div>
 </template>
-    
-    
+
+
 <style scoped></style>
-    
