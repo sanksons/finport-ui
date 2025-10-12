@@ -1,4 +1,5 @@
 <script setup>
+import api from '@/utils/api.js';
 import InvestmentYoY from '../components/charts/mf/InvestmentYoY.vue'
 import UnitsBar from '../components/charts/mf/UnitsBar.vue'
 import FundGrowthYoY from '../components/charts/mf/FundGrowthYoY.vue'
@@ -16,8 +17,7 @@ const folios = ref([]);
 onMounted(() => {
     const route = useRoute();
 
-    fetch('http://localhost:8080/mf/details?investor=' + investor.value.id, { method: 'GET' })
-        .then((response) => response.json())
+    api.get('/mf/details?investor=' + investor.value.id, { method: 'GET' })
         .then(apiData => {
             folios.value = apiData
         })

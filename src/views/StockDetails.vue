@@ -2,6 +2,7 @@
 
 import DataTable from 'primevue/datatable';
 import Column from 'primevue/column';
+import api from '@/utils/api.js';
 
 import { dateFormat, dateDiffInDaysTextual } from '../utils/common.js'
 
@@ -20,8 +21,7 @@ onMounted(() => {
     const route = useRoute();
     console.warn("route", route.params)
 
-    fetch('http://localhost:8080/stock/transactions?share=' + route.params.id, { method: 'GET' })
-        .then((response) => response.json())
+    api.get('/stock/transactions?share=' + route.params.id, { method: 'GET' })
         .then(apiData => {
             stocktransactions.value = apiData
 

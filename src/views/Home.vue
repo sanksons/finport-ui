@@ -5,30 +5,31 @@ import { useRoute } from 'vue-router'
 import { ref, onMounted, inject } from 'vue'
 import { ToIndianNumber } from '../utils/common.js'
 
+import api from '@/utils/api.js';
+
 const investor = inject('investor')
 
 const dashboard = ref(null);
 
 onMounted(() => {
     const route = useRoute();
-    console.warn("route", route.params)
+    console.warn("route", route.params);
 
-    fetch('http://localhost:8080/investment/dashboard?investor=' + investor.value.id, { method: 'GET' })
-        .then((response) => response.json())
-        .then(apiData => {
-            console.log("voila")
-            let total = {}
+    api.get('/investment/dashboard?investor=' + investor.value.id)
+        .then(apiData => {  // apiData is already parsed JSON
+            console.log("voila");
+            let total = {};
             for (let i in apiData) {
-                // if (i != "Broker") {
-                let t = prepareDashboardValues(apiData[i])
-                total[i] = t
-                //}
+                let t = prepareDashboardValues(apiData[i]);
+                total[i] = t;
             }
-            //console.log(apiData)
-            dashboard.value = { 'data': apiData, 'total': total }
-            console.log(dashboard.value)
+            dashboard.value = { 'data': apiData, 'total': total };
+            console.log(dashboard.value);
         })
-})
+        .catch(error => {
+            console.error('Error fetching dashboard:', error);
+        });
+});
 
 function prepareDashboardValues(data) {
 

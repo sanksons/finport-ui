@@ -2,6 +2,7 @@
 import { ref, onMounted, onBeforeMount } from 'vue'
 import { GetChart, CHART_COLORS } from '../../../utils/chart.js'
 import ChartDataLabels from 'chartjs-plugin-datalabels';
+import api from '@/utils/api.js';
 
 const props = defineProps({
     id: String,
@@ -11,8 +12,7 @@ const props = defineProps({
 const loaded = ref(true);
 
 onMounted(() => {
-    fetch('http://localhost:8080/mf/folio?folio=' + props.folio.Id, { method: 'GET' })
-        .then((response) => response.json())
+    api.get('/mf/folio?folio=' + props.folio.Id, { method: 'GET' })
         .then(apiData => {
             loaded.value = true
             GetChart(props.id, getConfig(apiData))

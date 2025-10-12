@@ -3,7 +3,7 @@
 import { useRoute } from 'vue-router'
 
 import { ref, onMounted, inject } from 'vue'
-
+import api from '@/utils/api.js';
 import DataTable from 'primevue/datatable';
 import Column from 'primevue/column';
 
@@ -16,8 +16,7 @@ const stocks = ref([]);
 onMounted(() => {
     const route = useRoute();
 
-    fetch('http://localhost:8080/stock/consolidated?investor=' + investor.value.id, { method: 'GET' })
-        .then((response) => response.json())
+    api.get('/stock/consolidated?investor=' + investor.value.id, { method: 'GET' })
         .then(apiData => {
             stocks.value = apiData
         })

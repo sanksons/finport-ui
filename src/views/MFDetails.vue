@@ -2,7 +2,7 @@
 
 import DataTable from 'primevue/datatable';
 import Column from 'primevue/column';
-
+import api from '@/utils/api.js';
 
 import InvestmentYoY from '../components/charts/mf/InvestmentYoY.vue'
 import UnitsBar from '../components/charts/mf/UnitsBar.vue'
@@ -62,8 +62,7 @@ onMounted(() => {
     const route = useRoute();
     console.warn("route", route.params)
 
-    fetch('http://localhost:8080/mf/details?investor=' + investor.value.id, { method: 'GET' })
-        .then((response) => response.json())
+    api.get('/mf/details?investor=' + investor.value.id, { method: 'GET' })
         .then(apiData => {
             for (let f of apiData) {
                 if (f.Id == route.params.id) {
@@ -75,8 +74,7 @@ onMounted(() => {
             //console.log("folio1", foliodetail)
         })
 
-    fetch('http://localhost:8080/mf/folio/purchases?folio=' + route.params.id, { method: 'GET' })
-        .then((response) => response.json())
+    api.get('/mf/folio/purchases?folio=' + route.params.id, { method: 'GET' })
         .then(apiData => {
             folioPurchases.value = apiData
             console.log("foliopurchases", apiData)
